@@ -3,11 +3,12 @@ import { sendServiceRequest } from "../../utils";
 import dotenv from "dotenv";
 
 dotenv.config();
+const orderServiceUrl = process.env.ORDER_SERVICE
 
 export async function getOrders(): Promise<Orders[]> {
-  console.log(`${process.env.ORDER_SERVICE}/orders`);
+  console.log(`${orderServiceUrl}/orders`);
   const response = await sendServiceRequest(
-    `${process.env.ORDER_SERVICE}/orders`,
+    `${orderServiceUrl}/orders`,
     "GET"
   );
   const data = await response.json();
@@ -17,7 +18,7 @@ export async function getOrders(): Promise<Orders[]> {
 
 export async function orderById(id: string): Promise<Orders | any> {
   const response = await sendServiceRequest(
-    `${process.env.ORDER_SERVICE}/order/${id}`,
+    `${orderServiceUrl}/order/${id}`,
     "GET"
   );
 
@@ -28,7 +29,7 @@ export async function orderById(id: string): Promise<Orders | any> {
 
 export async function addOrder(orderObj: AddOrder): Promise<any> {
   const response = await sendServiceRequest(
-    `${process.env.ORDER_SERVICE}/addorder`,
+    `${orderServiceUrl}/addorder`,
     "POST",
     orderObj
   );
@@ -42,7 +43,7 @@ export async function updateOrder(
   orderObj: UpdateOrders
 ): Promise<any> {
   const response = await sendServiceRequest(
-    `${process.env.ORDER_SERVICE}/updateorder/${orderId}`,
+    `${orderServiceUrl}/updateorder/${orderId}`,
     "PUT",
     orderObj
   );
@@ -52,7 +53,7 @@ export async function updateOrder(
 
 export async function deleteOrder(orderId: string): Promise<any> {
   const response = await sendServiceRequest(
-    `${process.env.ORDER_SERVICE}/deleteorder/${orderId}`,
+    `${orderServiceUrl}/deleteorder/${orderId}`,
     "DELETE"
   );
   const data = await response.json();
