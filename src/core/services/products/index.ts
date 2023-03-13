@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import { AddProduct, Products, UpdateProduct } from "boundary/products";
 
 dotenv.config();
-const productServiceUrl = `${process.env.PRODUCT_SERVICE}:${process.env.PRODUCT_SERVICE_PORT}`;
+const productServiceUrl = process.env.PRODUCT_SERVICE
 
 export async function getProducts(): Promise<Products[]> {
   console.log(`${productServiceUrl}/products`);
