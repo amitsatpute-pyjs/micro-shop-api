@@ -3,7 +3,7 @@ import products from "./products";
 
 const router = Router();
 
-const baseURL = "/";
+const baseURL = "/api";
 router.use(baseURL, products);
 
 export { router };
