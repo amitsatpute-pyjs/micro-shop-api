@@ -3,11 +3,14 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { router as orderRouter } from "./routes/orders";
 import { router as productRouter } from "./routes/products";
+import swaggerUi from "swagger-ui-express";
+import { apiDoc } from "./openapi/apiDocs";
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
+app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(apiDoc));
 app.use(express.json());
 app.use(cors());
 app.use(orderRouter);
