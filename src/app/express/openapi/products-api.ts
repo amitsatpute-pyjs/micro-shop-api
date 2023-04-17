@@ -39,7 +39,7 @@ export const productApiDoc = {
         },
       },
     },
-    "/product/{id}": {
+    "/api/product/{id}": {
       parameters: [
         {
           name: "id",
